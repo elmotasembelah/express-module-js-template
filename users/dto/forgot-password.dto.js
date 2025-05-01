@@ -1,0 +1,12 @@
+const { z } = require("zod");
+const { phoneNumberDto } = require("./fields/phone-number.dto");
+
+const forgotPasswordDto = z.object({
+  body: z.object({
+    phoneNumber: phoneNumberDto,
+  }),
+});
+
+module.exports = {
+  forgotPasswordDto,
+};

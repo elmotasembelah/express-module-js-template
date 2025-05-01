@@ -1,0 +1,9 @@
+.env
+node_modules
+notes.txt
+
+# uploads
+
+## uploads/cases/steps
+uploads/cases/steps/*
+!uploads/cases/steps/.gitkeep

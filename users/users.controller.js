@@ -62,6 +62,14 @@ const updateHandler = async (req, res) => {
   res.status(200).json({ success: true, message: "User updated successfully", data: updatedUser });
 };
 
+const deleteHandler = async (req, res) => {
+  const { userId } = req.params;
+
+  const deletedUser = await usersService.findAndUpdate({ _id: userId });
+
+  res.status(200).json({ success: true, message: "User deleted successfully", data: deletedUser });
+};
+
 const getCurrentUserHandler = async (req, res) => {
   const currentUser = res.locals.user;
 
@@ -78,5 +86,6 @@ module.exports = {
   forgotPasswordHandler,
   resetPasswordHandler,
   updateHandler,
+  deleteHandler,
   getCurrentUserHandler,
 };

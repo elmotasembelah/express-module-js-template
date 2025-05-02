@@ -153,6 +153,16 @@ const findAndUpdate = async (query, update, options = { new: true }) => {
   return typeof user.toSafeObject === "function" ? user.toSafeObject() : user;
 };
 
+const findAnddelete = async (query, update, options = { new: true }) => {
+  const user = await UserModel.findOneAndDelete(query);
+
+  if (!user) {
+    return null;
+  }
+
+  return typeof user.toSafeObject === "function" ? user.toSafeObject() : user;
+};
+
 module.exports = {
   create,
   login,

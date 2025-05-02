@@ -11,6 +11,7 @@ const { forgotPasswordDto } = require("./dto/forgot-password.dto");
 const { resetPasswordDto } = require("./dto/reset-password.dto");
 const { updateUserDto } = require("./dto/update-user.dto");
 const { ownerOrAdmin } = require("../middleware/owner-or-admin.middleware");
+const { deleteUserDto } = require("./dto/deleete-user.dto");
 
 const userRouter = Router();
 
@@ -37,6 +38,13 @@ userRouter.put(
   validate(updateUserDto),
   ownerOrAdmin(),
   usersController.updateHandler,
+);
+userRouter.delete(
+  "/:userId",
+  requireUser,
+  validate(deleteUserDto),
+  ownerOrAdmin(),
+  usersController.deleteHandler,
 );
 
 userRouter.get("/me", requireUser, usersController.getCurrentUserHandler);

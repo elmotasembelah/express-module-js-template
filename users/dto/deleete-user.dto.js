@@ -1,8 +1,9 @@
 const { z } = require("zod");
+const { userIdDto } = require("./fields/user-id.dto");
 
 const deleteUserDto = z.object({
   params: z.object({
-    userId: z.string().min(1, "Id is required"),
+    userId: userIdDto,
   }),
 });
 

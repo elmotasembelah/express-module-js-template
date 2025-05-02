@@ -4,6 +4,7 @@ const { passwordDto } = require("./fields/password.dto");
 const { passwordConfirmationDto } = require("./fields/confirm-password.dto");
 const { nameDto } = require("./fields/name.dto");
 const { ageDto } = require("./fields/age.dto");
+const { userIdDto } = require("./fields/user-id.dto");
 
 const updateUserDto = z.object({
   body: z.object({
@@ -13,7 +14,7 @@ const updateUserDto = z.object({
     gender: z.enum(["male", "female"]),
   }),
   params: z.object({
-    userId: z.string().min(1, "Id is required"),
+    userId: userIdDto,
   }),
 });
 
